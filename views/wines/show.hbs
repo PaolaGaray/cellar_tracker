@@ -1,0 +1,29 @@
+<h1>My Cellar</h1>
+
+<table style="width:100%">
+    <tr>
+          <th>winery</th>
+          <th>name</th>
+          <th>actions</th>
+          {{!-- <th>type</th>
+          <th>year</th>
+          <th>grape</th>
+          <th>Country</th>
+          <th>Region</th> --}}
+    </tr>
+        {{#each wines}}
+        <tr>
+          <th>{{winery}}</th>
+          <th>{{name}}</th>
+          <th><a href="/wines/details">see more</a></th>
+          {{!-- <th>{{type}}</th>
+          <th>{{year}}</th>
+          <th>{{grape}}</th>
+          <th>{{Country}}</th>
+          <th>{{Region}}</th> --}}
+        </tr>
+        {{/each}}
+    </table>
+    </br></br>
+
+  <a href="/wines/new">Add</a>

@@ -80,6 +80,9 @@ app.use('/', index);
 
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
-      
+
+const wines = require('./routes/wines');
+app.use('/wines', wines);      
+
 
 module.exports = app;
