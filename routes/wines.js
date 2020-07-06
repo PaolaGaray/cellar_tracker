@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 
 //Create wines
-router.get('/wines', (req, res) => {
+router.get('/new', (req, res) => {
   res.render('wines/new')
 });
 
@@ -26,7 +26,7 @@ router.post('/add-wines-form', (req, res) => {
   const newWine = new Wine ( { winery, name, type, year,  grape, Country, Region} )
   newWine.save()
   .then((wine) => {
-    res.redirect('show')
+    res.redirect('/wines')
   })  
   .catch((error) => {
     console.log(error);
