@@ -6,8 +6,12 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
+const Wine = require("../models/Wine");
 
 const bcryptSalt = 10;
+
+const dbName = 'cellar-tracker';
+
 
 mongoose
   .connect('mongodb://localhost/cellar-tracker', {useNewUrlParser: true})
@@ -18,30 +22,59 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
-let users = [
+// let users = [
+//   {
+//     username: "alice",
+//     password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+//   },
+//   {
+//     username: "bob",
+//     password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+//   }
+// ]
+
+// User.deleteMany()
+// .then(() => {
+//   return User.create(users)
+// })
+// .then(usersCreated => {
+//   console.log(`${usersCreated.length} users created with the following id:`);
+//   console.log(usersCreated.map(u => u._id));
+// })
+// .then(() => {
+//   // Close properly the connection to Mongoose
+//   mongoose.disconnect()
+// })
+// .catch(err => {
+//   mongoose.disconnect()
+//   throw err
+// })
+
+const wines = [
   {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    winery: 'Wine & Soul',
+    name: 'Douro',
+    type: 'red',
+    year: 2010,
+    grape: ['Touriga Nacional', 'Tinta Roiz'],
+    Country: 'Spain',
+    Region: 'Catalunia'
   },
   {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
-  }
-]
+    winery: 'Wine & Soul',
+    name: 'Chardonay',
+    type: 'white',
+    year: 2015,
+    grape: ['Touriga Nacional', 'Tinta Roiz'],
+    Country: 'Australia',
+    Region: 'Sydney'
+  },
+];
 
-User.deleteMany()
-.then(() => {
-  return User.create(users)
-})
-.then(usersCreated => {
-  console.log(`${usersCreated.length} users created with the following id:`);
-  console.log(usersCreated.map(u => u._id));
-})
-.then(() => {
-  // Close properly the connection to Mongoose
-  mongoose.disconnect()
-})
-.catch(err => {
-  mongoose.disconnect()
-  throw err
-})
+
+
+Wine.create(wines, (err) => {
+  if (err) { throw(err) }
+  console.log(`Created ${wines.length} wines`)
+  mongoose.connection.close();
+});
