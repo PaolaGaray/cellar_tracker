@@ -45,15 +45,26 @@ router.post("/signup", (req, res, next) => {
       password: hashPass
     });
 
-    newUser.save()
-    .then(() => {
-      res.redirect("/");
+    newUser.save((err) => {
+      if (err) {
+        res.render("auth/signup", { message: "Something went wrong" });
+      } else {
+        req.logIn(newUser, function(err) {
+          if (err) { return next(err); }
+          return res.redirect("/");
+        });        
+      }
+    });
     })
-    .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
+    .catch(error => {
+      next(error)
     })
   });
-});
+
+  router.get(`/wines/show`, (req, res) => {
+    res.render(`wines/show`);
+  });
+  
 
 
 router.get("/logout", (req, res) => {

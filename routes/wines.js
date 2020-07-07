@@ -18,10 +18,17 @@ console.log(userDocument)
 });
 
 
+router.get(`/wines`, (req, res) => {
+  res.render(`wines/show`);
+});
+
+
 //Create wines
 router.get('/new', (req, res) => {
-  res.render('wines/new')
+  res.render('wines/new');
 });
+
+
 
 router.post('/add-wines-form', (req, res) => {
   const { winery, name, type, year,  grape, country, region} = req.body;
