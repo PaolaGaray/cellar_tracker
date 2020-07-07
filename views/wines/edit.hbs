@@ -1,0 +1,35 @@
+<h2>Edit Wine</h2>
+<form action="/wines/{{ wine._id}}" method="POST">
+
+  <label for="winery">Winery</label>
+  <input id= "winery" type="text" name="winery" value="{{ wine.winery}}">
+  
+  <label for="name">Name</label>
+  <input id= "name" type="text" name="name" value="{{ wine.name}}">
+
+
+  <label for="type">Type</label>
+  <input id= "type" type="text" name="type" value="{{ wine.type}}">
+
+
+  <label for="year">Year</label>
+  <input id= "year" type="text" name="year" value="{{ wine.year}}">
+
+
+  <label for="grape">Grape</label>
+  <input id= "grape" type="text" name="grape" value="{{ wine.grape}}">
+
+
+  <label for="country">Country</label>
+  <input id= "country" type="text" name="country" value="{{ wine.country}}">
+
+
+  <label for="region">Region</label>
+  <input id= "region" type="text" name="region" value="{{ wine.region}}">
+
+  
+  <button type="submit">Update</button>
+</form>
+
+</br></br>
+<a href="/wines">back</a>

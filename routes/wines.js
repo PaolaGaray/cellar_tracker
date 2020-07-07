@@ -22,8 +22,8 @@ router.get('/new', (req, res) => {
 });
 
 router.post('/add-wines-form', (req, res) => {
-  const { winery, name, type, year,  grape, Country, Region} = req.body;
-  const newWine = new Wine ( { winery, name, type, year,  grape, Country, Region} )
+  const { winery, name, type, year,  grape, country, region} = req.body;
+  const newWine = new Wine ( { winery, name, type, year,  grape, country, region} )
   newWine.save()
   .then((wine) => {
     res.redirect('/wines')
@@ -34,6 +34,42 @@ router.post('/add-wines-form', (req, res) => {
 });
 
 
+//HELP!
 //See wine details
+router.get('details/:id', (req, res, next) => {
+  Wine.findById(req.params.id)
+      .then(wine => {
+          res.render('/details', { wine: id });
+      })
+      .catch(err => {
+          next(err);
+      });
+});
+
+
+//HELP!
+//Update wine
+router.get('details/:id/edit', (req, res, next) => {
+  Wine.findById(req.params.id)
+      .then(wine => {
+          res.render('wines/edit', { wine });
+      })
+      .catch(err => {
+          next(err);
+      });
+});
+
+router.post('/:id', (req, res, next) => {
+  const { winery, name, type, year,  grape, country, region } = req.body;
+  Wine.findByIdAndUpdate(req.params.id, { winery, name, type, year,  grape, country, region })
+      .then(() => {
+          res.redirect('/wine');
+      })
+      .catch(err => {
+          next(err);
+      });
+})
+
+
 
 module.exports = router;

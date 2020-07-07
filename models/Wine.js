@@ -7,8 +7,8 @@ const wineSchema = new Schema({
   type: String,
   year: Number,
   grape: [String],
-  Country: String,
-  Region: String
+  country: String,
+  region: String
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -4,26 +4,34 @@
     <tr>
           <th>winery</th>
           <th>name</th>
-          <th>actions</th>
+          <th>see details</th>
+          <th>edit</th>
+          <th>delete</th>
           {{!-- <th>type</th>
           <th>year</th>
           <th>grape</th>
-          <th>Country</th>
-          <th>Region</th> --}}
+          <th>country</th>
+          <th>region</th> --}}
     </tr>
         {{#each wines}}
         <tr>
           <th>{{winery}}</th>
           <th>{{name}}</th>
-          <th><a href="/wines/details">see more</a></th>
+          <th><a href="/wines/details/{{ _id }}">See Details</a></th>
+          <th><a href="/wines/details/{{ this._id }}/edit">Edit</a></th>
+          <th><form action="/wines/details/{{ this._id }}/delete" method="POST">
+              <button type="submit">Delete</button></form></th>
+
           {{!-- <th>{{type}}</th>
           <th>{{year}}</th>
           <th>{{grape}}</th>
-          <th>{{Country}}</th>
-          <th>{{Region}}</th> --}}
+          <th>{{country}}</th>
+          <th>{{region}}</th> --}}
         </tr>
         {{/each}}
     </table>
     </br></br>
 
-  <a href="/wines/new">Add</a>
+  <a href="/wines/new">add wine</a>
+  </br></br>
+  <a href="/">back</a>

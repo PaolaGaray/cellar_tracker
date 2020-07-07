@@ -30,18 +30,4 @@ router.get('/paola', loginCheck(), (req, res, next) => {
 
 
 
-
-
-// create a middleware that checks if a user is logged in
-
-
-
-// router.get('/private', loginCheck(), (req, res) => {
-//   res.render('private');
-// });
-
-// router.get('/profile', loginCheck(), (req, res) => {
-//   res.render('profile');
-// });
-
 module.exports = router;
