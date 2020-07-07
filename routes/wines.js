@@ -33,6 +33,18 @@ router.post('/add-wines-form', (req, res) => {
   })
 });
 
+//Delete Wines
+router.get('/wines/delete/:wineId', (req, res) => {
+  Wine.deleteOne({ _id: req.params.wineId })
+    .then(() => {
+      res.redirect('/wines/show');
+    })
+    .catch(err => {
+      console.log(err);
+      // next(err)
+    })
+})
+
 
 //See wine details
 
