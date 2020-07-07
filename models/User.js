@@ -5,7 +5,7 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   password: String,
-  wineIds: [{ type: Schema.Types.ObjectId, ref: Wine}]
+  wineIds: [{ type: Schema.Types.ObjectId, ref: "Wine"}]
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -6,9 +6,11 @@ const Wine = require("../models/Wine");
 
 //List wines
 router.get('/', (req, res) => {
-  Wine.find()
-    .then(allTheWinesFromDB => {
-      res.render('wines/show', { wines: allTheWinesFromDB });
+
+  User.findById(req.user._id).populate("wineIds")
+    .then(userDocument => {
+console.log(userDocument)
+      res.render('wines/show', { wines: userDocument.wineIds });
     }) 
     .catch(error => {
       console.log('Error while getting the books from the DB: ', error);
@@ -26,7 +28,8 @@ router.post('/add-wines-form', (req, res) => {
   const newWine = new Wine ( { winery, name, type, year,  grape, country, region} )
   newWine.save()
   .then((wine) => {
-    res.redirect('/wines')
+    User.findByIdAndUpdate(req.user._id, { $push: { wineIds: wine._id }}).then(() => res.redirect('/wines'))
+    //res.redirect('/wines')
   })  
   .catch((error) => {
     console.log(error);
@@ -46,12 +49,13 @@ router.get('/wines/delete/:wineId', (req, res) => {
 })
 
 
-//HELP!
 //See wine details
-router.get('details/:id', (req, res, next) => {
+router.get('/details/:id', (req, res, next) => {
+  console.log(req.params.id)
   Wine.findById(req.params.id)
       .then(wine => {
-          res.render('/details', { wine: id });
+        console.log(wine)
+          res.render('wines/details', { wine });
       })
       .catch(err => {
           next(err);
