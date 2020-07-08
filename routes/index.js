@@ -1,6 +1,7 @@
 const express = require('express');
 const Wine = require('../models/Wine');
 const router  = express.Router();
+const { uploader, cloudinary } = require("../config/cloudinary.js");
 
 const loginCheck = () => {
   return (req, res, next) => {
