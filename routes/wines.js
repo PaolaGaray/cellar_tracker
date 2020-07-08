@@ -26,7 +26,10 @@ router.get(`/wines`, (req, res) => {
 
 //Create wines
 router.get('/new', (req, res) => {
-  res.render('wines/new');
+  const types = ["red", "white", "rose", "sparkling", "fortified" ];
+  // const grapes = ["a", "b"];
+  res.render('wines/new', { types: types});
+  // res.render('wines/new');
 });
 
 router.post('/add-wines-form', uploader.single('photo'), (req, res) => {

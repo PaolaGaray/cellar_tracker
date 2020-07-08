@@ -8,13 +8,30 @@
   <input type="text" name="name"></br></br>
 
   <label for="">Type:</label>
-  <input type="text" name="type"></br></br>
+  {{!-- <input type="text" name="type"></br></br> --}}
+
+  <select name="type">
+    {{#each types}}
+    <option value={{this}}>{{this}}</option>
+    {{/each }}
+  </select>
+
 
   <label for="">Year:</label>
   <input type="number" name="year"></br></br>
 
   <label for="">Grape:</label>
-  <input type="text" name="grape"></br></br>
+  {{!-- <input type="text" name="grape"></br></br> --}}
+  <div>
+    <div class="checkbox">
+       <label><input name="grape" type="checkbox" value="grape1"> Grape 1 </label> 
+    </div>
+    <div class="checkbox">
+       <label><input name="grape" type="checkbox" value="grape2"> Grape 2 </label> 
+    </div>
+  </div>
+
+
 
   <label for="">Country:</label>
   <input type="text" name="country"></br></br>

@@ -4,7 +4,7 @@ const Schema   = mongoose.Schema;
 const wineSchema = new Schema({
   winery: String,
   name: String,
-  type: String,
+  type: [String],
   year: Number,
   grape: [String],
   country: String,
