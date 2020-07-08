@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Wine = require("../models/Wine");
+const { uploader, cloudinary } = require("../config/cloudinary.js");
 
 
 //List wines
@@ -28,11 +29,15 @@ router.get('/new', (req, res) => {
   res.render('wines/new');
 });
 
-
-
-router.post('/add-wines-form', (req, res) => {
+router.post('/add-wines-form', uploader.single('photo'), (req, res) => {
   const { winery, name, type, year,  grape, country, region} = req.body;
-  const newWine = new Wine ( { winery, name, type, year,  grape, country, region} )
+
+  //console.log(req.file);
+  const imgPath = req.file.url;
+  const imgName = req.file.originalname;
+  const imgPublicId = req.file.public_id;
+
+  const newWine = new Wine ( { winery, name, type, year,  grape, country, region, imgName, imgPublicId, imgPath } )
   newWine.save()
   .then((wine) => {
     User.findByIdAndUpdate(req.user._id, { $push: { wineIds: wine._id }}).then(() => res.redirect('/wines'))
@@ -43,10 +48,18 @@ router.post('/add-wines-form', (req, res) => {
   })
 });
 
-//Delete Win
+
+//Delete wine
 router.post('/details/:id/delete', (req, res) => {
   Wine.findByIdAndRemove(req.params.id)
-    .then(() => {
+    .then( wine => {
+
+       // if movie has an image then we also want to delete the img on cloudinary
+       if (wine.imgPath) {
+        // delete the img on cloudinary - we need the so called public id
+        cloudinary.uploader.destroy(wine.imgPublicId);
+      }
+
       res.redirect('/wines');
     })
     .catch(err => {
@@ -58,10 +71,10 @@ router.post('/details/:id/delete', (req, res) => {
 
 //See wine details
 router.get('/details/:id', (req, res, next) => {
-  console.log(req.params.id)
+  //console.log(req.params.id)
   Wine.findById(req.params.id)
       .then(wine => {
-        console.log(wine)
+        //console.log(wine)
           res.render('wines/details', { wine });
       })
       .catch(err => {
@@ -70,7 +83,6 @@ router.get('/details/:id', (req, res, next) => {
 });
 
 
-//HELP!
 //Edit wine
 router.get('/details/:id/edit', (req, res, next) => {
   Wine.findById(req.params.id)
@@ -81,6 +93,7 @@ router.get('/details/:id/edit', (req, res, next) => {
           next(err);
       });
 });
+
 
 router.post('/:id', (req, res, next) => {
   const { winery, name, type, year,  grape, country, region } = req.body;
