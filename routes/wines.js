@@ -27,20 +27,22 @@ router.get(`/wines`, (req, res) => {
 //Create wines
 router.get('/new', (req, res) => {
   const types = ["red", "white", "rose", "sparkling", "fortified" ];
-  // const grapes = ["a", "b"];
+ 
   res.render('wines/new', { types: types});
-  // res.render('wines/new');
+
 });
 
 router.post('/add-wines-form', uploader.single('photo'), (req, res) => {
   const { winery, name, type, year,  grape, country, region} = req.body;
+
 
   //console.log(req.file);
   const imgPath = req.file.url;
   const imgName = req.file.originalname;
   const imgPublicId = req.file.public_id;
 
-  const newWine = new Wine ( { winery, name, type, year,  grape, country, region, imgName, imgPublicId, imgPath } )
+
+  const newWine = new Wine ( { winery, name, type, year,  grape, country, region, imgName, imgPublicId, imgPath} )
   newWine.save()
   .then((wine) => {
     User.findByIdAndUpdate(req.user._id, { $push: { wineIds: wine._id }}).then(() => res.redirect('/wines'))

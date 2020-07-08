@@ -11,7 +11,7 @@ const wineSchema = new Schema({
   region: String,
   imgName: String,
   imgPath: String,
-  imgPublicId: String
+  imgPublicId: String,
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -19,5 +19,8 @@ const wineSchema = new Schema({
   }
   });
 
+wineSchema.index({ location: '2dsphere'});
+
 const Wine = mongoose.model('Wine', wineSchema);
+
 module.exports = Wine;
