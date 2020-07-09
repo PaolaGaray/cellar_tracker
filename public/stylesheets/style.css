@@ -18,4 +18,13 @@ a {
   justify-content: center;
   align-items: center; }
 
+.login {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+
 /*# sourceMappingURL=style.css.map */

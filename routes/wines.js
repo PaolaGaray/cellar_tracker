@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
   User.findById(req.user._id).populate("wineIds")
     .then(userDocument => {
 console.log(userDocument)
-      res.render('wines/show', { wines: userDocument.wineIds });
+      res.render('wines/show', { wines: userDocument.wineIds, user: req.user});
     }) 
     .catch(error => {
       console.log('Error while getting the books from the DB: ', error);
@@ -28,7 +28,7 @@ router.get(`/wines`, (req, res) => {
 router.get('/new', (req, res) => {
   const types = ["red", "white", "rose", "sparkling", "fortified" ];
  
-  res.render('wines/new', { types: types});
+  res.render('wines/new', { types: types, user: req.user});
 
 });
 
@@ -80,7 +80,7 @@ router.get('/details/:id', (req, res, next) => {
   Wine.findById(req.params.id)
       .then(wine => {
         //console.log(wine)
-          res.render('wines/details', { wine });
+          res.render('wines/details', { wine, user: req.user});
       })
       .catch(err => {
           next(err);
@@ -92,7 +92,7 @@ router.get('/details/:id', (req, res, next) => {
 router.get('/details/:id/edit', (req, res, next) => {
   Wine.findById(req.params.id)
       .then(wine => {
-          res.render('wines/edit', { wine });
+          res.render('wines/edit', { wine, user: req.user });
       })
       .catch(err => {
           next(err);
