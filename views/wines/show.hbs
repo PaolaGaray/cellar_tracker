@@ -1,37 +1,51 @@
-<h1>My Cellar</h1>
+{{!-- <h1>My Cellar</h1> --}}
 
-<table style="width:100%">
-    <tr>
-          <th>winery</th>
-          <th>name</th>
-          <th>see details</th>
-          <th>edit</th>
-          <th>delete</th>
-          {{!-- <th>type</th>
-          <th>year</th>
-          <th>grape</th>
-          <th>country</th>
-          <th>region</th> --}}
-    </tr>
-        {{#each wines}}
-        <tr>
-          <th>{{winery}}</th>
-          <th>{{name}}</th>
-          <th><a href="/wines/details/{{ _id }}">See Details</a></th>
-          <th><a href="/wines/details/{{ this._id }}/edit">Edit</a></th>
-          <th><form action="/wines/details/{{ this._id }}/delete" method="POST">
-              <button type="submit">Delete</button></form></th>
+<main role="main">
 
-          {{!-- <th>{{type}}</th>
-          <th>{{year}}</th>
-          <th>{{grape}}</th>
-          <th>{{country}}</th>
-          <th>{{region}}</th> --}}
-        </tr>
-        {{/each}}
-    </table>
-    </br></br>
+    <section class="jumbotron text-center">
+    <div class="container">
+      <h1>My Cellar</h1>
+      <p class="lead text-muted">Here is your fantastic collection of wines!!</p>
+      <p>
+        <a href="/wines/new" class="btn btn-primary my-2">add wine</a>
+        <a href="/" class="btn btn-secondary my-2">back</a>
+      </p>
+    </div>
+  </section>
 
-  <a href="/wines/new">add wine</a>
-  </br></br>
-  <a href="/">back</a>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+        
+            {{#each wines}}
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+
+                  <div class="wine-container">
+                    <img width="37px" height= "auto" src="{{this.imgPath}}" alt="Photo for {{this.name}}">
+                    </div>
+
+                    <div class="card-body">
+                      {{!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
+                          <div class="d-flex justify-content-between align-items-center"></div>
+                              {{winery}}<BR>
+                              {{name}}<BR>
+                              <div class="btn-group">
+                                  <button onclick="window.location.href=`/wines/details/{{ _id }}`;" class="btn btn-sm btn-outline-secondary">View</button>
+                                  <button onclick="window.location.href=`/wines/details/{{ this._id }}/edit`;" class="btn btn-sm btn-outline-secondary">Edit</button> 
+                              </div>
+                                   {{!-- <form action="/wines/details/{{ this._id }}/delete" method="POST" class="btn btn-sm btn-outline-secondary">
+                                  <button type="submit">Delete</button></form>     --}}
+                    </div>  
+                </div> 
+              </div>
+            {{/each}}
+          
+
+      </div>
+    </div>
+  </div>
+
+
+  </main>

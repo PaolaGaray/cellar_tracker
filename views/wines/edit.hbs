@@ -1,7 +1,9 @@
 <h2>Edit Wine</h2>
 <form action="/wines/{{ wine._id}}" method="POST">
 
-  <label for="winery">Winery</label>
+  <h4 class="mb-3">Billing address</h4>
+
+  <h4><label class="mb-3" for="winery">Winery</label></h4>
   <input id= "winery" type="text" name="winery" value="{{ wine.winery}}">
   
   <label for="name">Name</label>

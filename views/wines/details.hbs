@@ -1,50 +1,70 @@
-<h2>Wine Details</h2>
 {{#with wine}}
-<div>{{ this.winery }}</div>
-<div>{{ this.name}}</div>
 
-<div><img src="{{this.imgPath}}" alt="Photo for {{this.name}}"></div>
+{{!-- <div>{{ this.region}}</div> --}}
 
-<div>{{ this.type}}</div>
-<div>{{ this.year}}</div>
-<div>{{ this.grape}}</div>
-<div>{{ this.country}}</div>
-<div>{{ this.region}}</div>
+
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+
+  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <h1 class="display-5">{{ this.winery }}</h1>
+      <h2 class="lead">{{ this.name}}</h2>
+    </div>
+  </div>
+
+  <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div class="my-3 py-3">
+      <h6>Type: {{ this.type}}</h6>
+      <h6>Year: {{ this.year}}</h6>
+      <h6>Grape: {{ this.grape}}</h6>
+      <h6>Year: {{ this.year}}</h6>
+      <h6 id="country">Country: {{this.country}}</h6>
+      <h6 id="address">Region: {{this.region}}</h6>
+      {{!-- <p id="address">{{this.region}}</p>
+      <p id="country">{{this.country}}</p> --}}
+      <script>
+    let currentAddress = document.getElementById("address").innerText + ", " + document.getElementById("country").innerText;
+</script>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+
+   <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+         <div id="winemap" style="height: 500px; width: 100%;"> hello</div>
+    </div>
+  </div>
+
+  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <img  height="500"  src="{{this.imgPath}}" alt="Photo for {{this.name}}">
+    </div>
+  </div>
+
+
+</div>
+
+</br></br> 
+
+      <p>
+        <a href="/wines" class="btn btn-primary my-2">back</a>
+        <form action="/wines/details/{{ this._id }}/delete" method="POST"><button type="submit" class="btn btn-secondary my-2">delete</button></form>
+      </p>
+
+
 
 {{/with}}
-</br> 
-
-</br> 
 
 
-<a href="/wines">back</a>
-</br> </br> </br> </br> 
- 
-mapboxgl.accessToken = ‘pk.eyJ1IjoicGFvbGFnYXJheSIsImEiOiJja2NkZW1tOHMwOTlzMnFvMzg4MDBrbjM1In0.yI3lS23KrlGHSisuupLagQ’;
- var mapboxClient = mapboxSdk({
-   accessToken: mapboxgl.accessToken
- });
-     mapboxClient.geocoding
-         .forwardGeocode({
-             query: ‘Wellington, New Zealand’,
-            autocomplete: false,
-             limit: 1
-        })
-         .send()
-        .then(function(response) {
-                       if (
-                 response &&
-                 response.body &&
-                 response.body.features &&
-                 response.body.features.length
-             ) {
-                 var feature = response.body.features[0];
-                 var map = new mapboxgl.Map({
-                     container: ‘map’,
-                     style: ‘mapbox://styles/mapbox/streets-v11’,
-                     center: feature.center,
-                    zoom: 10
-                });
-                new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
-           }
-        });
+
+
+
+
+
+         

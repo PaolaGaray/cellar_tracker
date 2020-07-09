@@ -1,42 +1,100 @@
-<h1>New Wine</h1>
-
-<form action="add-wines-form" method="post" enctype="multipart/form-data">
-  <label for="">Winery</label>
-  <input type="text" name="winery"></br></br>
-
-  <label for="">Name:</label>
-  <input type="text" name="name"></br></br>
-
-  <label for="">Type:</label>
-  {{!-- <input type="text" name="type"></br></br> --}}
-
-  <select name="type">
-    {{#each types}}
-    <option value={{this}}>{{this}}</option>
-    {{/each }}
-  </select>
+<div class="container">
 
 
-  <label for="">Year:</label>
-  <input type="number" name="year"></br></br>
-  
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/images/newwine.png" alt="" width="72" height="72">
+    <h2>New Wine</h2>
+  </div>
 
-  <label for="">Grape:</label>
-  {{!-- <input type="text" name="grape"></br></br> --}}
-  <div>
+  <form action="add-wines-form" method="post" enctype="multipart/form-data">
+
+
+        <div class="row">
+
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Winery</label>
+                <input type="text" class="form-control" name="winery"></br></br>
+              </div>
+
+
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Name</label>
+                <input type="text" class="form-control" name="name"></br></br>
+              </div>
+
+        </div>
+
+        <div class="row">
+
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Country</label>
+                <input type="text" class="form-control" name="country"></br></br>
+              </div>
+
+
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Region</label>
+                <input type="text" class="form-control" name="region"></br></br>
+              </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-md-4 mb-3">
+            <label for="state">Type</label>
+              <select class="custom-select d-block w-100" name="type">
+                 {{#each types}}
+              <option value={{this}}>{{this}}</option>
+                  {{/each }}
+              </select>
+          </div>
+
+
+            <div>
+                <label for="state">Grape</label>
+                    <div class="custom-control custom-checkbox checkbox">
+                    <label><input name="grape" type="checkbox" value="grape1"> Grape 1 </label> 
+                    <label><input name="grape" type="checkbox" value="grape2"> Grape 2 </label>
+                    </div>
+
+                    {{!-- <div class="custom-control custom-checkbox checkbox">
+                    <label><input name="grape" type="checkbox" value="grape2"> Grape 2 </label>
+                    </div> --}}
+            </div>
+
+        </div>
+
+
+
+
+
+  {{!-- <div>
     <div class="checkbox">
        <label><input name="grape" type="checkbox" value="grape1"> Grape 1 </label> 
     </div>
     <div class="checkbox">
        <label><input name="grape" type="checkbox" value="grape2"> Grape 2 </label> 
     </div>
-  </div>
+  </div> --}}
 
-  <label for="">Country:</label>
-  <input type="text" name="country"></br></br>
 
-  <label for="">Region:</label>
-  <input type="text" name="region"></br></br>
+
+
+
+
+
+
+
+
+
+  <label for="">Year:</label>
+  <input type="number" name="year"></br></br>
+  
+
+
+
 
   <label>Photo</label>
   <input type="file" name="photo"></br></br>
@@ -47,4 +105,9 @@
   <button type="submit">ADD</button>
 </form>
 </br></br>
+
+
 <a href="/wines">back</a>
+
+
+</div>
