@@ -12,13 +12,13 @@
         <div class="row">
 
               <div class="col-md-6 mb-3">
-                <label for="firstName">Winery</label>
+                <label for="winery">Winery</label>
                 <input type="text" class="form-control" name="winery"></br></br>
               </div>
 
 
               <div class="col-md-6 mb-3">
-                <label for="firstName">Name</label>
+                <label for="name">Name</label>
                 <input type="text" class="form-control" name="name"></br></br>
               </div>
 
@@ -27,13 +27,13 @@
         <div class="row">
 
               <div class="col-md-6 mb-3">
-                <label for="firstName">Country</label>
+                <label for="country">Country</label>
                 <input type="text" class="form-control" name="country"></br></br>
               </div>
 
 
               <div class="col-md-6 mb-3">
-                <label for="firstName">Region</label>
+                <label for="region">Region</label>
                 <input type="text" class="form-control" name="region"></br></br>
               </div>
 
@@ -43,7 +43,7 @@
         <div class="row">
 
           <div class="col-md-4 mb-3">
-            <label for="state">Type</label>
+            <label for="type">Type</label>
               <select class="custom-select d-block w-100" name="type">
                  {{#each types}}
               <option value={{this}}>{{this}}</option>
@@ -58,56 +58,35 @@
                     <label><input name="grape" type="checkbox" value="grape1"> Grape 1 </label> 
                     <label><input name="grape" type="checkbox" value="grape2"> Grape 2 </label>
                     </div>
-
-                    {{!-- <div class="custom-control custom-checkbox checkbox">
-                    <label><input name="grape" type="checkbox" value="grape2"> Grape 2 </label>
-                    </div> --}}
             </div>
 
         </div>
 
+        <div class="row">
 
+                  <div class="col-md-6 mb-3">
+                     <label for="year">Year</label>
+                     <input type="number" class="form-control" name="year"></br></br>
+                  </div>
+                  
+                  <div class="col-md-6 mb-3">
+                      <label for="photo">Photo</label>
+                      <input type="file" name="photo"></br></br>
+                  </div>
 
-
-
-  {{!-- <div>
-    <div class="checkbox">
-       <label><input name="grape" type="checkbox" value="grape1"> Grape 1 </label> 
-    </div>
-    <div class="checkbox">
-       <label><input name="grape" type="checkbox" value="grape2"> Grape 2 </label> 
-    </div>
-  </div> --}}
-
-
-
-
-
-
-
-
-
-
-
-  <label for="">Year:</label>
-  <input type="number" name="year"></br></br>
-  
-
-
-
-
-  <label>Photo</label>
-  <input type="file" name="photo"></br></br>
+        </div>
 
   </br></br></br></br>
 
+      <p>
+        <button class="btn btn-primary my-2" type="submit">ADD</button>
+        <a href="/wines" class="btn btn-secondary my-2">back</a>
+      </p>
 
-  <button type="submit">ADD</button>
 </form>
-</br></br>
 
 
-<a href="/wines">back</a>
+{{!-- <a href="/wines">back</a> --}}
 
 
 </div>

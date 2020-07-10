@@ -1,37 +1,115 @@
-<h2>Edit Wine</h2>
+<div class="container">
+
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/images/wine-glass-flat.png" alt="" width="72" height="72">
+    <h2>Edit Wine</h2>
+  </div>
+
 <form action="/wines/{{ wine._id}}" method="POST">
 
-  <h4 class="mb-3">Billing address</h4>
-
-  <h4><label class="mb-3" for="winery">Winery</label></h4>
-  <input id= "winery" type="text" name="winery" value="{{ wine.winery}}">
-  
-  <label for="name">Name</label>
-  <input id= "name" type="text" name="name" value="{{ wine.name}}">
+      {{!-- <h4><label class="mb-3" for="winery">Winery</label></h4>
+      <input id= "winery" type="text" name="winery" value="{{ wine.winery}}">
+      
+      <label for="name">Name</label>
+      <input id= "name" type="text" name="name" value="{{ wine.name}}"> --}}
 
 
-  <label for="type">Type</label>
-  <input id= "type" type="text" name="type" value="{{ wine.type}}">
+      <div class="row">
+
+              <div class="col-md-6 mb-3">
+                <label for="winery">Winery</label>
+                <input id= "winery" class="form-control" type="text" name="winery" value="{{ wine.winery}}"></br></br>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="name">Name</label>
+                <input id= "name" class="form-control" type="text" name="name" value="{{ wine.name}}"></br></br>
+              </div>
+
+      </div>
 
 
-  <label for="year">Year</label>
-  <input id= "year" type="text" name="year" value="{{ wine.year}}">
+      {{!-- <label for="country">Country</label>
+      <input id= "country" type="text" name="country" value="{{ wine.country}}">
+
+      <label for="region">Region</label>
+      <input id= "region" type="text" name="region" value="{{ wine.region}}"> --}}
 
 
-  <label for="grape">Grape</label>
-  <input id= "grape" type="text" name="grape" value="{{ wine.grape}}">
+      <div class="row">
+
+              <div class="col-md-6 mb-3">
+                <label for="country">Country</label>
+                <input id= "country" class="form-control" type="text" name="country" value="{{ wine.country}}"></br></br>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="region">Region</label>
+                <input id= "region" class="form-control" type="text" name="region" value="{{ wine.region}}"></br></br>
+              </div>
+
+      </div>
 
 
-  <label for="country">Country</label>
-  <input id= "country" type="text" name="country" value="{{ wine.country}}">
 
 
-  <label for="region">Region</label>
-  <input id= "region" type="text" name="region" value="{{ wine.region}}">
+      {{!-- <label for="type">Type</label>
+      <input id= "type" type="text" name="type" value="{{ wine.type}}">
 
-  
-  <button type="submit">Update</button>
+      <label for="grape">Grape</label>
+      <input id= "grape" type="text" name="grape" value="{{ wine.grape}}"> --}}
+
+
+
+
+
+      <div class="row">
+
+              <div class="col-md-6 mb-3">
+                <label for="type">Type</label>
+                <input id= "type" class="form-control"  type="text" name="type" value="{{ wine.type}}"></br></br>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="grape">Grape</label>
+                <input id= "grape" class="form-control" type="text" name="grape" value="{{ wine.grape}}"></br></br>
+              </div>
+
+      </div>
+
+
+
+      <div class="row">
+
+                  <div class="col-md-6 mb-3">
+                     <label for="year">Year</label>
+                     <input id= "year" class="form-control" type="number" name="year" value="{{ wine.year}}"></br></br>
+                  </div>
+                  
+
+        </div>
+{{!-- 
+
+      <label for="year">Year</label>
+      <input id= "year" type="text" name="year" value="{{ wine.year}}"> --}}
+
+
+
+
+
+
+
+        </div>
+  </br></br></br></br>
+
+      <p>
+        <button class="btn btn-primary my-2" type="submit">Update</button>
+        <a href="/wines" class="btn btn-secondary my-2">back</a>
+      </p>
+
+
+      
+
+
+
 </form>
 
-</br></br>
-<a href="/wines">back</a>
+</div>
