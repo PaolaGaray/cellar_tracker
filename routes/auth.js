@@ -13,7 +13,7 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
+  successRedirect: "/wines",
   failureRedirect: "/auth/login",
   failureFlash: true,
   passReqToCallback: true
@@ -51,7 +51,7 @@ router.post("/signup", (req, res, next) => {
       } else {
         req.logIn(newUser, function(err) {
           if (err) { return next(err); }
-          return res.redirect("/");
+          return res.redirect("/wines");
         });        
       }
     });
