@@ -14,17 +14,17 @@
       <div class="col-md-4" style="background: url('../images/pic2.png') center; background-size: 100%">
         <h2 style="color: #43352D; font-family: 'Yellowtail', cursive;"> Create your own wine collection database</h2>
         <p>  </p>
-        <p><a class="btn btn-secondary" href="/auth/signup" role="button">View details &raquo;</a></p>
+        <p><a id="newbotton" class="btn btn-secondary" href="/auth/signup" role="button" style="background-color:#251A18; color:#F0EBE1;">View details &raquo;</a></p>
       </div>
       <div class="col-md-4" style="background: url('../images/pic1.png') center; background-size: 100%">
         <h2 style="color:#F0EBE1; font-family: 'Yellowtail', cursive;"> Add pictures to your </br> wine collection  </h2>
         <p>  </p>
-        <p><a class="btn btn-secondary" href="/auth/signup" role="button">View details &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="/auth/signup" role="button" style="background-color: #251A18; color:#F0EBE1;">View details &raquo;</a></p>
       </div>
       <div class="col-md-4" style="background: url('../images/pic3.png') center; background-size: 100%">
-        <h2 style="color: #43352D; font-family: 'Yellowtail', cursive;"> See where your </br> wines come from </h2>
+        <h2 style="color: #43352D; font-family: 'Yellowtail', cursive;" > See where your </br> wines come from </h2>
         <p> </p>
-        <p><a class="btn btn-secondary" href="/auth/signup" role="button">View details &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="/auth/signup" role="button" style="background-color: #251A18; color:#F0EBE1;">View details &raquo;</a></p>
       </div>
     </div>
     <hr>
@@ -34,13 +34,15 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write(‘<script src="../assets/js/vendor/jquery.slim.min.js”><\/script>")</script><script src="../assets/dist/js/bootstrap.bundle.js"></script></body>
 <div style="display: none;"><h1>{{title}}</h1>
+
+
 <p>Welcome {{#if user}}{{user.username}}{{/if}}</p>
 {{#if user}}
 <a href="/auth/logout">Logout</a>
 <a href="/wines">My Cellar</a>
 {{!-- <a href=“/private”>Private</a> --}}
 {{else}}
-<a href="/auth/signup">Signup</a>
-<a href="/auth/login">Login</a>
+<a style="background-color: #251A18;" href="/auth/signup">Signup</a>
+<a style="background-color: #251A18;" href="/auth/login" >Login</a>
 {{/if}}
 </div>
